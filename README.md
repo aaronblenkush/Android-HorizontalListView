@@ -6,15 +6,31 @@ This was forked from https://github.com/MeetMe/Android-HorizontalListView in ord
 
 ## Install to local Maven repository
 
+This library has not been published. You will need to install it locally.
+
  - git clone https://github.com/aaronblenkush/Android-HorizontalListView.git
  - cd Android-HorizontalListView
  - create local.properties file with `sdk.dir`
  - ./gradlew uploadArchives
+ - Note: In your project, be sure to add `mavenLocal()` under `allprojects.repositories` in the project build.gradle
 
-## Add as dependency to project
+## Download
 
- - add `mavenLocal()` under `allprojects.repositories` in project build.gradle.
- - add `compile 'com.meetme.android:horizontal-list-view:1.0'` to module build.gradle
+Gradle:
+
+    dependencies {
+        compile 'com.meetme.android:horizontal-list-view:1.0'
+    }
+
+Maven:
+
+    <dependency>
+        <groupId>com.meetme.android</groupId>
+        <artifactId>horizontal-list-view</artifactId>
+        <version>1.0</version>
+        <type>aar</aar>
+    </dependency>
+
 
 ## Usage
 To use in an XML layout:
