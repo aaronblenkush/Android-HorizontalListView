@@ -51,6 +51,8 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Scroller;
 
+import com.meetme.android.horizontallist.R;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -219,7 +221,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
     /** Registers the gesture detector to receive gesture notifications for this view */
     private void bindGestureDetector() {
         // Generic touch listener that can be applied to any view that needs to process gestures
-        final View.OnTouchListener gestureListenerHandler = new View.OnTouchListener() {
+        final OnTouchListener gestureListenerHandler = new OnTouchListener() {
             @Override
             public boolean onTouch(final View v, final MotionEvent event) {
                 // Delegate the touch event to our gesture detector
@@ -480,7 +482,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
      * @param child The child.
      */
     private void measureChild(View child) {
-        ViewGroup.LayoutParams childLayoutParams = getLayoutParams(child);
+        LayoutParams childLayoutParams = getLayoutParams(child);
         int childHeightSpec = ViewGroup.getChildMeasureSpec(mHeightMeasureSpec, getPaddingTop() + getPaddingBottom(), childLayoutParams.height);
 
         int childWidthSpec;
@@ -494,11 +496,11 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
     }
 
     /** Gets a child's layout parameters, defaults if not available. */
-    private ViewGroup.LayoutParams getLayoutParams(View child) {
-        ViewGroup.LayoutParams layoutParams = child.getLayoutParams();
+    private LayoutParams getLayoutParams(View child) {
+        LayoutParams layoutParams = child.getLayoutParams();
         if (layoutParams == null) {
             // Since this is a horizontal list view default to matching the parents height, and wrapping the width
-            layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         }
 
         return layoutParams;
@@ -817,7 +819,7 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
      */
     private View getChild(int adapterIndex) {
         if (adapterIndex >= mLeftViewAdapterIndex && adapterIndex <= mRightViewAdapterIndex) {
-            return getChildAt(adapterIndex - mLeftViewAdapterIndex);
+            getChildAt(adapterIndex - mLeftViewAdapterIndex);
         }
 
         return null;
@@ -865,16 +867,6 @@ public class HorizontalListView extends AdapterView<ListAdapter> {
         mFlingTracker.startScroll(mNextX, 0, x - mNextX, 0);
         setCurrentScrollState(OnScrollStateChangedListener.ScrollState.SCROLL_STATE_FLING);
         requestLayout();
-    }
-
-    @Override
-    public int getFirstVisiblePosition() {
-        return mLeftViewAdapterIndex;
-    }
-
-    @Override
-    public int getLastVisiblePosition() {
-        return mRightViewAdapterIndex;
     }
 
     /** Draws the overscroll edge glow effect on the left and right sides of the horizontal list */

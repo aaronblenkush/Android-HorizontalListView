@@ -1,3 +1,7 @@
+This is forked from https://github.com/MeetMe/Android-HorizontalListView in order to port it over to Android Studio.
+
+It also includes a gradle task update `uploadArchives` which will install the library to the local Maven repository.
+
 # HorizontalListView
 
 HorizontalListView is an Android ListView widget which scrolls in a horizontal manner (in contrast with the SDK-provided ListView which scrolls vertically).
