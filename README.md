@@ -1,10 +1,20 @@
-This is forked from https://github.com/MeetMe/Android-HorizontalListView in order to port it over to Android Studio.
-
-It also includes a gradle task update `uploadArchives` which will install the library to the local Maven repository.
-
 # HorizontalListView
 
 HorizontalListView is an Android ListView widget which scrolls in a horizontal manner (in contrast with the SDK-provided ListView which scrolls vertically).
+
+This was forked from https://github.com/MeetMe/Android-HorizontalListView in order to port it over to Android Studio.
+
+## Install to local Maven repository
+
+ - git clone https://github.com/aaronblenkush/Android-HorizontalListView.git
+ - cd Android-HorizontalListView
+ - create local.properties file with `sdk.dir`
+ - ./gradlew uploadArchives
+
+## Add as dependency to project
+
+ - add `mavenLocal()` under `allprojects.repositories` in project build.gradle.
+ - add `compile 'com.meetme.android:horizontal-list-view:1.0'` to module build.gradle
 
 ## Usage
 To use in an XML layout:
@@ -38,6 +48,7 @@ Notice you set the `dividerWidth` via the XML namespace you just defined as it i
 ## Contributors
 
  - [Bill Donahue](https://github.com/bdonahue)
+ - [Aaron Blenkush](http://github.com/aaronblenkush)
 
 ## Licenses
 
